@@ -22,12 +22,7 @@ class BurgerBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        ingredients: {
-            lettuce: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        },
+        ingredients: null,
         totalPrice: 5,
         purchasable: false,
         purchasing: false,
@@ -36,6 +31,9 @@ class BurgerBuilder extends Component {
 
     componentDidMount () {
         axios.get('https://myburgerbuilder-60be5.firebaseio.com/ingredients.json');
+            .then(response => {
+                this.setState({ingredients: response.data});
+            });
     }
 
     updatePurchaseState (ingredients) {
