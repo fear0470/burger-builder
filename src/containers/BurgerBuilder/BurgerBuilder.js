@@ -34,6 +34,10 @@ class BurgerBuilder extends Component {
         loading: false
     }
 
+    componentDidMount () {
+        axios.get('https://myburgerbuilder-60be5.firebaseio.com/ingredients.json');
+    }
+
     updatePurchaseState (ingredients) {
         const sum = Object.keys( ingredients )
             .map( igKey => {
@@ -88,11 +92,11 @@ class BurgerBuilder extends Component {
         this.setState({ loading: true });
         const order = {
             ingredients: this.state.ingredients,
-            price: this.state.totalPrice
+            price: this.state.totalPrice,
             customer: {
                 name: 'Nick Fearns',
                 address: {
-                    street: '555 Test Lane'
+                    street: '555 Test Lane',
                     postalCode: 'L0R1B7',
                     country: 'Canada'
                 },
@@ -100,7 +104,7 @@ class BurgerBuilder extends Component {
             },
             deliveryMethod: 'fastest'
         }
-        axios.post('/orders.json', order);
+        axios.post('/orders.json', order)
             .then( response => {
                 this.setState({ loading: false, purchasing: false })
             } )
