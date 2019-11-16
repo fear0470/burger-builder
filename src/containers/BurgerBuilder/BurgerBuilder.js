@@ -126,6 +126,24 @@ class BurgerBuilder extends Component {
         if (this.state.loading) {
             orderSummary = <Spinner />;
         }
+        let burger = <Spinner />
+
+        if (this.state.ingredients) {
+            burger = (
+                <Aux>
+                    <Burger ingredients={this.state.ingredients} />
+                    <BuildControls
+                        ingredientAdded={this.addIngredientHandler}
+                        ingredientRemoved={this.removeIngredientHandler}
+                        disabled={disabledInfo}
+                        purchasable={this.state.purchasable}
+                        ordered={this.purchaseHandler}
+                        price={this.state.totalPrice} />);
+                </Aux>
+            );
+        }
+        
+        
 
         // {salad: true, meat: false, ...}
         return (
@@ -133,14 +151,7 @@ class BurgerBuilder extends Component {
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     {orderSummary}
                 </Modal>
-                <Burger ingredients={this.state.ingredients} />
-                <BuildControls
-                    ingredientAdded={this.addIngredientHandler}
-                    ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disabledInfo}
-                    purchasable={this.state.purchasable}
-                    ordered={this.purchaseHandler}
-                    price={this.state.totalPrice} />
+                {burger}
             </Aux>
         );
     }
