@@ -3,6 +3,7 @@
 <ul>
   <li>Uses React to build a burger with a number of toppings such as lettuce, cheese or bacon.</li>
   <li>Orders are stored with Firebase using axios for the API calls. </li>
+  <li>Uses routing to give the feeling of multiple pages within the SPA.</li>
   <li>still under construction</li>
  </ul>
  
