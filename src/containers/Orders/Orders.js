@@ -35,4 +35,4 @@ class Orders extends Component {
     }
 }
 
-export default withErrorHandler(Orders);
+export default withErrorHandler(Orders, axios);
