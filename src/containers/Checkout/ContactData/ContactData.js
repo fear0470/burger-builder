@@ -16,12 +16,13 @@ class ContactData extends Component {
         loading: false
     }
 
-    orderHandler = (event) => {
-      this.setState({ loading: true });
+    orderHandler = ( event ) => {
+        event.preventDefault();
+        this.setState( { loading: true } );
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price,
-           customer: {
+            customer: {
                 name: 'Nick Fearns',
                 address: {
                     street: '555 Test Lane',
@@ -32,19 +33,20 @@ class ContactData extends Component {
             },
             deliveryMethod: 'fastest'
         }
-        axios.post('/orders.json', order)
+        axios.post( '/orders.json', order )
             .then( response => {
-                this.setState({ loading: false });
+                this.setState( { loading: false } );
                 this.props.history.push('/');
             } )
-            .catch(error => {
-                this.setState({ loading: false });
+            .catch( error => {
+                this.setState( { loading: false } );
             } );
     }
 
     render () {
         let form = (
             <form>
+
                 <Input inputtype="input" type="text" name="" placeholder="Your Name" />
                 <Input inputtype="input" type="email" name="email" placeholder="Your Email" />
                 <Input inputtype="input" type="text" name="street" placeholder="Street" />
@@ -52,7 +54,7 @@ class ContactData extends Component {
                 <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
             </form>
         );
-        if (this.state.loading) {
+        if ( this.state.loading ) {
             form = <Spinner />;
         }
         return (
