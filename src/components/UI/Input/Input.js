@@ -6,18 +6,18 @@ const input = (props) => {
 
     switch ( props.inputType ) {
         case ( 'input' );
-            inputElement = <input className={} {...props} />;
+            inputElement = <input className={classes.InputElement} {...props} />;
             break;
         case ( 'textarea' );
-            inputElement = <textarea className={} {...props} />;
+            inputElement = <textarea className={classes.InputElement} {...props} />;
             break;
         default: 
-            inputElement = <input className={} {...props} />;
+            inputElement = <input className={classes.InputElement} {...props} />;
     }
 
     return (
-        <div>
-            <label>{props.label}</label>
+        <div className={classes.Input}>
+            <label className={classes.Label}>{props.label}</label>
             {inputElement}
         </div>
     );
