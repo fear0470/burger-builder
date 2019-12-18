@@ -14,7 +14,10 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                }
             },
             street: {
                 elementType: 'input',
@@ -22,7 +25,10 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Address'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                }
             },
             postalCode: {
                 elementType: 'input',
@@ -30,7 +36,10 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Postal Code'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                }
             },
             country: {
                 elementType: 'input',
@@ -38,7 +47,10 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Country'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                }
             },
             email: {
                 elementType: 'input',
@@ -46,7 +58,10 @@ class ContactData extends Component {
                     type: 'email',
                     placeholder: 'Your Email'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                }
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -56,7 +71,10 @@ class ContactData extends Component {
                         { value: 'cheapest', displayValue: 'Cheapest'}
                     ]
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                }
             }
         },
         loading: false
