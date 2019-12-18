@@ -40,7 +40,9 @@ class ContactData extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    minLength: 6,
+                    maxLength: 7
                 },
                 valid: false
             },
@@ -105,7 +107,21 @@ class ContactData extends Component {
     }
 
     checkValidity(value, rules) {
+        let isValid = false;
 
+        if (RadioNodeList.required) {
+            isValid = value.trim() !== '';
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.minLength
+        }
+
+        return isValid;
     }
 
     inputChangedHandler = (event, inutIdentifier) => {
@@ -116,6 +132,7 @@ class ContactData extends Component {
             ...updatedOrderForm[inutIdentifier]
         };
         updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedOrderForm[inutIdentifier] = updatedFormElement;
         this.setState({ orderForm: updatedOrderForm });
     }
