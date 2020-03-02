@@ -18,13 +18,12 @@ export const purchaseBurgerFail = (error) => {
 
 export const purchaseBurgerStart = (orderData) => {
     return dispatch => {
-        axios.post( '/orders.json', order )
+        axios.post( '/orders.json', orderData )
             .then( response => {
-                this.setState( { loading: false } );
-                this.props.history.push('/');
+                dispatch( purchaseBurgerSuccess( response.data, orderData ) );
             } )
             .catch( error => {
-                this.setState( { loading: false } );
+                dispatch( purchaseBurgerFail( error ) );
             } );
     };
 };
