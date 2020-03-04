@@ -5,6 +5,7 @@ import Button from '../../../components/UI/Button/Button';
 import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 
 class ContactData extends Component {
     state = {
@@ -95,7 +96,7 @@ class ContactData extends Component {
 
     orderHandler = ( event ) => {
         event.preventDefault();
-        this.setState( { loading: true } );
+  
         const formData = {};
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
@@ -188,4 +189,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps)(ContactData);
+export default connect(mapStateToProps)(withErrorHandler(ContactData, axios));
