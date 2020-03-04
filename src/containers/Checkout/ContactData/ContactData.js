@@ -6,6 +6,7 @@ import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+import * as actions from '../../../store/actions/index';
 
 class ContactData extends Component {
     state = {
@@ -187,6 +188,10 @@ const mapStateToProps = state => {
         ings: state.ingredients,
         price: state.totalPrice
     };
+}
+
+const mapDispatchToProps = dispatch => {
+    onOrderBurger: () => dispatch(actions.purchaseBurgerStart)
 }
 
 export default connect(mapStateToProps)(withErrorHandler(ContactData, axios));
